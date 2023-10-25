@@ -10,15 +10,29 @@ import '../errors/match_error.dart';
 class CreateRift {
   Result<Room, MatchError> call(Room room) {
     if (room.players.length < 10) {
+      final missingPlayers = 10 - room.players.length;
+      var message = 'Faltam $missingPlayers players.';
+
+      if (missingPlayers == 1) {
+        message = 'Falta $missingPlayers player.';
+      }
+
       return MinimalPlayersMatchError(
-        'Faltam ${10 - room.players.length} players.',
+        message,
         room: room,
       ).toFailure();
     }
 
     if (room.players.length > 10) {
+      final extraPlayers = room.players.length - 10;
+      var message = 'Remova $extraPlayers players.';
+
+      if (extraPlayers == 1) {
+        message = 'Remova $extraPlayers player.';
+      }
+
       return MinimalPlayersMatchError(
-        'Remova ${room.players.length - 10} players.',
+        message,
         room: room,
       ).toFailure();
     }

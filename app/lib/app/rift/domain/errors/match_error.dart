@@ -14,10 +14,10 @@ class MinimalPlayersMatchError extends MatchError {
 
 class RoleMatchError extends MatchError {
   RoleMatchError({super.room, super.trace})
-      : super('Precisa-se diversificar mais os papeis');
+      : super('Precisa-se diversificar mais as posições.');
 }
 
 class NotReadyMatchError extends MatchError {
   NotReadyMatchError({super.room, super.trace})
-      : super('Todos os player precisam está prontos');
+      : super('Todos os player precisam estar prontos.');
 }

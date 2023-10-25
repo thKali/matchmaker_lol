@@ -60,7 +60,7 @@ class RiftStore extends ValueNotifier<RiftState> {
 
     debounceTime?.cancel();
 
-    debounceTime = Timer(const Duration(seconds: 2), () async {
+    debounceTime = Timer(const Duration(milliseconds: 1500), () async {
       await playerRepository.update(player, value.room.id);
     });
   }
